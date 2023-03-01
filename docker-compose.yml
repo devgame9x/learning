@@ -1,0 +1,27 @@
+version: '3.6'
+services:
+  nginx:
+    build:
+      dockerfile: ./docker/nginx/Dockerfile
+      context: .
+    ports:
+      - 80:80
+    volumes:
+      - .:/app
+    depends_on:
+      - app
+
+  app:
+    build:
+      dockerfile: ./docker/app/Dockerfile
+      context: .
+      args:
+        DOCKER_UID: ${DOCKER_UID:-0}
+        DOCKER_GID: ${DOCKER_GID:-0}
+    tty: true
+    stdin_open: true
+    command: sh /docker-entrypoint.sh
+    volumes:
+      - .:/app
+    
+
