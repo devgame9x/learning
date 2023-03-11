@@ -2,11 +2,11 @@
 session_start();
 
 if (!empty($_POST)) {
-    $code = $_POST['code'];
+    $id = $_POST['id'];
     $name = $_POST['name'];
     $price = $_POST['price'];
-    $_SESSION['cart'][$code][] = [
-        'code' => $code,
+    $_SESSION['cart'][$id][] = [
+        'id' => $id,
         'name' => $name,
         'price' => $price
     ];

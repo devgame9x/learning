@@ -2,9 +2,9 @@
 session_start();
 
 if (!empty($_POST)) {
-    $code = $_POST['code'];
+    $id = $_POST['id'];
     $cart = $_SESSION['cart'];
-    unset($cart[$code]);
+    unset($cart[$id]);
     $_SESSION['cart'] = $cart;
 }
 // Trở về trang trước
